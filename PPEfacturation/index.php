@@ -8,6 +8,9 @@
 		<header>
 			<h1>Maison des ligues</h1>
 		</header>
+		<nav>
+			<a href=""></a>
+		</nav>
 	
 	</body>
 </html>
