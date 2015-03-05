@@ -1,4 +1,10 @@
-<header>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Service Facturation maison des ligues</title>
+	</head>
+	<body>
+		<header>
 			<h1>Maison des ligues</h1>
-			<img href="img/logo"/>
-</header>
+		</header>
