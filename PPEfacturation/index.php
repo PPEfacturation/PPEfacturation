@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Service Facturation maison des ligues</title>
-	</head>
-	<body>
-		<header>
-			<h1>Maison des ligues</h1>
-		</header>
-		<nav>
-			<a href=""></a>
-		</nav>
+<?php 
+	include("template/header.php");
+	include("template/menu.php");
+	include("template/footer.php");
 	
-	</body>
-</html>
+?>
