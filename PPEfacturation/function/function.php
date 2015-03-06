@@ -8,6 +8,7 @@ function connexion() {
 	catch ( Exception $erreurs ) {
 		echo $erreurs;
 	}
+	return $bdd;
 }
 function gestLocaux() {
 	connexion ();
