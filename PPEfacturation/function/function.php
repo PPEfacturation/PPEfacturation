@@ -4,14 +4,15 @@ function connexion() {
 	try {
 		$pdo_options [PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 		$bdd = new PDO ( 'mysql:host='.$hote .';dbname='.$base, $utilisateur, $mdp );
+		return $bdd;
 	} 
 	catch ( Exception $erreurs ) {
 		echo $erreurs;
 	}
-	return $bdd;
+	
 }
 function gestLocaux() {
-	connexion ();
+	$bdd = connexion ();
 	/*try {
 		$pdo_options [PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 		$bdd = new PDO ( 'mysql:host='.$hote .';dbname='.$base, $utilisateur, $mdp );
