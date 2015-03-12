@@ -15,8 +15,12 @@ table{
 
 td{
 	border:1px solid black;
+	
 }
-
+a{
+	text-decoration: none;
+}
 a:hover{
-	text-decoration : none;
+	border : 1px solid black;
+	
 }
