@@ -34,8 +34,8 @@ function gestLocaux() {
 		echo "<tr>";
 		echo "<td>" . $donnees ['room_name'] . "</td>";
 		echo "<td>" . $donnees ['name'] . "</td>";
-		echo "<td>".date('d/m/Y', $donnees['start_time']). "</td>";
-		echo "<td>".date('d/m/Y', $donnees['end_time'])."</td>";
+		echo "<td>".date('d/m/Y', $donnees['start_time']).' &agrave; '.date('H:i:s', $donnees['start_time'])."</td>";
+		echo "<td>".date('d/m/Y', $donnees['end_time']).' &agrave; '.date('H:i:s', $donnees['end_time'])."</td>";
 		echo "</tr>";
 	}
 	
