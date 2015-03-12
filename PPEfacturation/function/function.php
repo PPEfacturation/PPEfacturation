@@ -40,6 +40,7 @@ function gestLocaux() {
 }
 
 function genRecap() {
+	
 }
 
 ?>

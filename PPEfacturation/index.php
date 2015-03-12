@@ -7,6 +7,7 @@
 	//function getContenu($_GET['id']){
 		switch ($_GET['id']){
 			case "a":
+			
 			gestLocaux();
 			break;
 			case"b":
