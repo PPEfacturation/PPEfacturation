@@ -1,6 +1,12 @@
 <?php
-include_once ('param/id.php');
+//include('../param/id.php');
+
+
 function connexion() {
+	$base = "mrbs";
+	$hote ="localhost";
+	$utilisateur="root";
+	$mdp="";
 	try {
 		$pdo_options [PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 		$bdd = new PDO ( 'mysql:host='.$hote .';dbname='.$base, $utilisateur, $mdp );
@@ -9,7 +15,7 @@ function connexion() {
 	catch ( Exception $erreurs ) {
 		echo $erreurs;
 	}
-	
+	//return $bdd;
 }
 function gestLocaux() {
 	$bdd = connexion ();
@@ -24,14 +30,16 @@ function gestLocaux() {
 	echo '<table class="gestLocaux">';
 	echo "<tr><th>Nom de la salle</th><th>nom de l'utilisateur</th>";
 	
-	while ( $donnees = $reponseReq->fetch () ) {
+	while ( $donnees = $reponseReq->fetch() ) {
 		echo "<tr>";
 		echo "<td>" . $donnees ['room_name'] . "</td>";
 		echo "<td>" . $donnees ['name'] . "</td>";
 		echo "</tr>";
 	}
-	function genRecap() {
-	}
+	
+}
+
+function genRecap() {
 }
 
 ?>
