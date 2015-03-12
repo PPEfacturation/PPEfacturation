@@ -27,7 +27,7 @@ function gestLocaux() {
 		echo $erreurs;
 	}*/
 	$reponseReq = $bdd->query ('SELECT R.room_name,  U.name FROM mrbs_room R , mrbs_users U , mrbs_entry E WHERE R.id = E.room_id AND E.create_by = U.name');
-	echo '<table class="gestLocaux">';
+	echo '<table>';
 	echo "<tr><th>Nom de la salle</th><th>nom de l'utilisateur</th>";
 	
 	while ( $donnees = $reponseReq->fetch() ) {
