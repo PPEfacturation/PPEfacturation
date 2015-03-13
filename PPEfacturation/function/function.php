@@ -55,8 +55,11 @@ function genRecap($année) {
 		echo "<td>" . $donnees ['name'] . "</td>";
 		echo "<td>".date('d/m/Y', $donnees['start_time']).' &agrave; '.date('H:i:s', $donnees['start_time'])."</td>";
 		echo "<td>".date('d/m/Y', $donnees['end_time']).' &agrave; '.date('H:i:s', $donnees['end_time'])."</td>";
-		echo "<td>";
+		echo '<td> <form id="choix" method="get" action="genPdf.php" class="action">
+							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
+							<input type="hidden"  id="choix" name="choix" value=""/></form>';
 		echo "</tr>";
+		//TODO mettre une value au bouton cacher avec juste la ligne selectionné
 	}
 }
 
