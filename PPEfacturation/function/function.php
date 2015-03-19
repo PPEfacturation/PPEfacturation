@@ -59,7 +59,7 @@ function genRecap($année) {
 							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
 							<input type="hidden"  id="choix" name="choix" value=""/></form>';
 		echo "</tr>";
-		//TODO mettre une value au bouton cacher avec juste la ligne selectionné
+		//TODO mettre une value au bouton caché avec juste la ligne selectionné en base
 	}
 }
 
