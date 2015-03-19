@@ -10,7 +10,7 @@
 	
 	$choix = $_GET['choix'];
 	$pdf ->AddPage();
-	$txt = file_get_contents($choix[0]);
+	$txt = file_get_contents($choix);
 	$pdf -> MultiCell(0,10,$txt);
 	$pdf -> Output();
 	

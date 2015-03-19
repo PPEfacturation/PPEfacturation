@@ -41,6 +41,8 @@ function gestLocaux() {
 	
 }
 
+
+
 function genRecap($année) {
 	$bdd = connexion();
 	$req = 'SELECT * from mrbs_entry where FROM_UNIXTIME(start_time) LIKE "'.$année.'%"';
@@ -57,7 +59,7 @@ function genRecap($année) {
 		echo "<td>".date('d/m/Y', $donnees['end_time']).' &agrave; '.date('H:i:s', $donnees['end_time'])."</td>";
 		echo '<td> <form id="choix" method="get" action="genPdf.php" class="action">
 							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
-							<input type="hidden"  id="choix" name="choix" value=""/></form>';
+							<input type="hidden"  id="choix" name="choix" value="'.$donnees.'"/></form>';
 		echo "</tr>";
 		//TODO mettre une value au bouton caché avec juste la ligne selectionné en base
 	}
