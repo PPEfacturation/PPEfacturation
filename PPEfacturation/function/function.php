@@ -65,5 +65,10 @@ function genRecap($année) {
 	}
 }
 
+function genRecapFacturationLocaux() {
+	$bdd = connexion();
+	$req = 'SELECT ';
+}
+
 ?>
 	
