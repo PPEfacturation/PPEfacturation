@@ -48,7 +48,21 @@ function genRecap($année) {
 	$req = 'SELECT * from mrbs_entry where FROM_UNIXTIME(start_time) LIKE "'.$année.'%"';
 	//echo $req;
 	$reponseReq = $bdd->query($req);
-	echo '<table>';
+	require('fpdf.php');
+	
+	
+	$pdf = new FPDF();
+	$pdf -> SetFont('Arial','B','12');
+	$pdf -> Cell(0,196,'Récapitulatif des locations',0);
+	$pdf -> AddPage();
+	
+	while ( $donnees = $reponseReq->fetch() ) {
+		
+		$pdf -> Text(8,38,$donnees);
+		$pdf -> MultiCell(0,10,$donnees);
+		$pdf -> Output();
+	}
+	/*echo '<table>';
 	echo "<tr><th>Nom de l'utilisateur</th><th>nom de la reservation</th><th>Du</th><th>Au</th>";
 	
 	while ( $donnees = $reponseReq->fetch() ) {
@@ -65,9 +79,11 @@ function genRecap($année) {
 	echo"<tr>";
 	echo '<form id="choix" method="get" action="genPdf.php" class="action">
 							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
-							<input type="hidden"  id="choix" name="genPdf" value="'.$donnees.'"/></form>';
+							<input type="hidden"  id="genPdf" name="genPdf" value="'.$donnees.'"/></form>';
 	echo"</th>";
-	echo"</table>";
+	echo"</table>";*/
+	
+	
 	
 }
 
