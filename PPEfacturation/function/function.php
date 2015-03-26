@@ -71,5 +71,11 @@ function genRecap($année) {
 	
 }
 
+function genRecapFacturationLocaux() {
+	$bdd = connexion();
+	$req = 'SELECT nom_ligue, superficie_utilisee, create_by';
+	
+}
+
 ?>
 	
