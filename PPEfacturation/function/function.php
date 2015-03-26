@@ -49,7 +49,7 @@ function genRecap($année) {
 	//echo $req;
 	$reponseReq = $bdd->query($req);
 	echo '<table>';
-	echo "<tr><th>Nom de l'utilisateur</th><th>nom de la reservation</th><th>Du</th><th>Au</th><th>Action</th>";
+	echo "<tr><th>Nom de l'utilisateur</th><th>nom de la reservation</th><th>Du</th><th>Au</th>";
 	
 	while ( $donnees = $reponseReq->fetch() ) {
 		echo "<tr>";
@@ -57,12 +57,18 @@ function genRecap($année) {
 		echo "<td>" . $donnees ['name'] . "</td>";
 		echo "<td>".date('d/m/Y', $donnees['start_time']).' &agrave; '.date('H:i:s', $donnees['start_time'])."</td>";
 		echo "<td>".date('d/m/Y', $donnees['end_time']).' &agrave; '.date('H:i:s', $donnees['end_time'])."</td>";
-		echo '<td> <form id="choix" method="get" action="genPdf.php" class="action">
-							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
-							<input type="hidden"  id="choix" name="choix" value="'.$donnees.'"/></form>';
+		
 		echo "</tr>";
+		
 		//TODO mettre une value au bouton caché avec juste la ligne selectionné en base
 	}
+	echo"<tr>";
+	echo '<form id="choix" method="get" action="genPdf.php" class="action">
+							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
+							<input type="hidden"  id="choix" name="genPdf" value="'.$donnees.'"/></form>';
+	echo"</th>";
+	echo"</table>";
+	
 }
 
 ?>

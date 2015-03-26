@@ -3,15 +3,12 @@
 	
 	
 	$pdf = new FPDF();
-	$pdf -> AddPage();
 	$pdf -> SetFont('Arial','B','12');
-	$pdf -> Cell(0,10,'Edité le',0);
-	
-	
-	$choix = $_GET['choix'];
+	$pdf -> Cell(0,196,'Récapitulatif des locations',0);
+	$choix = $_GET['genPdf'];
 	$pdf ->AddPage();
-	$txt = file_get_contents($choix);
-	$pdf -> MultiCell(0,10,$txt);
+	$pdf -> Text(8,38,$choix['create_by']);
+	$pdf -> MultiCell(0,10,$choix);
 	$pdf -> Output();
 	
 ?>
