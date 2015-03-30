@@ -45,7 +45,7 @@ function gestLocaux() {
 
 function genRecap($annee) {
 	$bdd = connexion();
-	$req = 'SELECT * from mrbs_entry where FROM_UNIXTIME(start_time) LIKE "'.$annee.'%"';
+	$req = 'SELECT DISTINCT * from mrbs_entry where FROM_UNIXTIME(start_time) LIKE "'.$annee.'%"';
 	//echo $req;
 	$reponseReq = $bdd->query($req);
 
@@ -61,7 +61,7 @@ function genRecap($annee) {
 		
 		echo "</tr>";
 		
-		//TODO mettre une value au bouton caché avec juste la ligne selectionné en base
+		
 	}
 	echo"<tr>";
 	echo '<form id="choix" method="get" action="genPdf.php" class="action">

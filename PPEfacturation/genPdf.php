@@ -5,6 +5,7 @@
 	$pdf -> SetFont('Arial','B','12');
 	$pdf -> Cell(8,196,'Récapitulatif des locations',0);
 	$pdf -> AddPage();
+	$pdf -> Image('img/logo.png');
 	$bdd = connexion();
 	$req = 'SELECT * from mrbs_entry where FROM_UNIXTIME(start_time) LIKE "'.$_GET['genPdf'].'%"';
 	//echo $req;
