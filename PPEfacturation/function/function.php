@@ -17,6 +17,8 @@ function connexion() {
 	}
 	//return $bdd;
 }
+
+
 function gestLocaux() {
 	$bdd = connexion ();
 	/*try {
@@ -63,6 +65,7 @@ function genRecap($annee) {
 		
 		
 	}
+	
 	echo"<tr>";
 	echo '<form id="choix" method="get" action="genPdf.php" class="action">
 							<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
@@ -76,9 +79,33 @@ function genRecap($annee) {
 
 function genRecapFacturationLocaux() {
 	$bdd = connexion();
-	$req = 'SELECT nom_ligue, superficie_utilisee, create_by';
+	$req = 'SELECT nom_ligue, superficie_utilisee, create_by FROM mrbs_ligue, mrbs_entry';
+	$reponseReq = $bdd->query($req);
 	
+	echo "<table>";
+	echo "<tr><th>Nom de la ligue</th><th>Superficie utilisée</th><th>Réservation de</th></tr>";
+	
+	while ($donnees = $reponseReq->fetch()){
+		echo "<tr>";
+		echo "<td>".$donnees['nom_ligue']."</td>";
+		echo "<td>".$donnees['superficie_utilisee']."</td>";
+		echo "<td>".$donnees['create_by']."</td>";
+		echo "</tr>";
+	}
+	echo"</table>";
+	
+	$file = fopen("facturation.txt", "r");
+	if(!$file) {
+		die("L'ouverture de <i>flowers.txt</i> a échoué.");
+	}
+	fwrite($file,$donnees);
+	$contenu_du_fichier = fgets($file, 1024);
+	fclose($ile);
+	
+		echo $contenu_du_fichier;
+	//readfile($file);	
 }
+
 
 function basicTable($header, $data)
 {
