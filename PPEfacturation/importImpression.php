@@ -1,6 +1,6 @@
 <?php
 include("template/header.php");
-
+include("template/menu.php");
 include("template/footer.php");
 include("function/function.php");
 ?>
@@ -31,13 +31,14 @@ if(isset($_GET['valider'])&& isset($_FILES['monfichier'])){
 		while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE)
 		{
 			if($flag) { $flag = false; continue; }
-			$sql = "INSERT INTO mrbs_impressions (JobIndex, protocol, userName, hostAdress, hostName, Page(sheet)Printed, Pages(side)Printed, startTime, endTime, interpreterDuration, paperType, paperSize, printerNumber, color)
+			$sql = "INSERT INTO mrbs_impressions (JobIndex, protocol, userName, hostAdress, hostName, pages(sheet)Printed, pages(side)Printed, startTime, endTime, interpreterDuration, paperType, paperSize, printerNumber, color)
 									VALUES ( '".$data[0]."','".$data[1]."','".$data[2]."','".$data[3]."','".$data[4]."','".$data[5]."','".$data[6]."','".$data[7]."','".$data[8]."','".$data[9]."','".$data[10]."','".$data[11]."','".$data[12]."','".$data[13]."')";
 			$bdd->query($sql);
 		}
 		echo "Le fichier ".$fichier." à été ajouté à la base de données.\n";
 		fclose($handle);
 	}
+	
 	//TODO continuer la fonction et la tester , faire le traintement du fichier .dat (commande fichier CSV)
 	
 	/*if (is_uploaded_file($_FILES["monfichier"]["tmp_name"])) {
