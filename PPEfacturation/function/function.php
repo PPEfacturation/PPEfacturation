@@ -92,7 +92,9 @@ function genRecapFacturationLocaux($id_ligue) {
 		
 		
 		echo '<form id="choix" method="get" action="genPdfRegion.php" class="action">
-		<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/></form>';
+		<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/>
+		<input type="hidden" value='.$id_ligue.'/>
+				</form>';
 		echo "<table>";
 		echo "<tr><th>Nom de la ligue</th><th>Superficie utilisée</th><th>Réservation de</th></tr>";
 		
