@@ -4,5 +4,5 @@
 			<a href="generationRecapRegion.php">Géneration de recapitulatif pour la région</a>
 			<a href="importImpression.php">Importation des impression</a>
 			<a href="affranchissement.php">Saisie affranchissement</a>
-			<a href=""></a>
+			<a href="ImpressionFacture.php">Impression des factures pour les affranchissements</a>
 </nav>

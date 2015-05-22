@@ -28,7 +28,7 @@ function gestLocaux() {
 	catch ( Exception $erreurs ) {
 		echo $erreurs;
 	}*/
-	$reponseReq = $bdd->query ('SELECT R.room_name,  U.name, E.start_time, E.end_time FROM mrbs_room R , mrbs_users U , mrbs_entry E WHERE R.id = E.room_id AND E.create_by = U.name');
+	$reponseReq = $bdd->query ('SELECT DISTINCT R.room_name,  U.name, E.start_time, E.end_time FROM mrbs_room R , mrbs_users U , mrbs_entry E WHERE R.id = E.room_id AND E.create_by = U.name');
 	echo '<table>';
 	echo "<tr><th>Nom de la salle</th><th>nom de l'utilisateur</th><th>Du</th><th>Au</th>";
 	
@@ -79,23 +79,29 @@ function genRecap($annee) {
 
 function genRecapFacturationLocaux() {
 	$bdd = connexion();
-	$req = 'SELECT nom_ligue, superficie_utilisee, create_by FROM mrbs_ligue, mrbs_entry';
-	$reponseReq = $bdd->query($req);
-	
-	
-	echo '<form id="choix" method="get" action="genPdfRegion.php" class="action">
-	<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/></form>';
-	echo "<table>";
-	echo "<tr><th>Nom de la ligue</th><th>Superficie utilisée</th><th>Réservation de</th></tr>";
-	
-	while ($donnees = $reponseReq->fetch()){
-		echo "<tr>";
-		echo "<td>".$donnees['nom_ligue']."</td>";
-		echo "<td>".$donnees['superficie_utilisee']."</td>";
-		echo "<td>".$donnees['create_by']."</td>";
-		echo "</tr>";
+	$req = 'SELECT COUNT(id_ligue) FROM mrbs_entry WHERE id_ligue = 1';
+	if($req > 5){
+		$req = 'SELECT nom_ligue, superficie_utilisee, create_by 
+				FROM mrbs_ligue ml, mrbs_entry me 
+				WHERE ml.id = me.id_ligue 
+				AND id_ligue = 1';
+		$reponseReq = $bdd->query($req);
+		
+		
+		echo '<form id="choix" method="get" action="genPdfRegion.php" class="action">
+		<input type="submit"  id="choix" name="choix" value="Génerer un pdf"/></form>';
+		echo "<table>";
+		echo "<tr><th>Nom de la ligue</th><th>Superficie utilisée</th><th>Réservation de</th></tr>";
+		
+		while ($donnees = $reponseReq->fetch()){
+			echo "<tr>";
+			echo "<td>".$donnees['nom_ligue']."</td>";
+			echo "<td>".$donnees['superficie_utilisee']."</td>";
+			echo "<td>".$donnees['create_by']."</td>";
+			echo "</tr>";
+		}
+		echo"</table>";	
 	}
-	echo"</table>";	
 }
 
 
