@@ -79,9 +79,11 @@ function genRecap($annee) {
 
 function genRecapFacturationLocaux($id_ligue) {
 	$bdd = connexion();
-	$req = 'SELECT COUNT(id_ligue) FROM mrbs_entry WHERE id_ligue = '.$id_ligue;
+	$req = 'SELECT id_ligue FROM mrbs_entry WHERE id_ligue = '.$id_ligue;
 	$reponseReq = $bdd->query($req);
-	if($reponseReq > 5){
+	$result = $reponseReq ->rowCount();
+	
+	if($result > 5){
 		$req2 = 'SELECT nom_ligue, superficie_utilisee, create_by 
 				FROM mrbs_ligue ml, mrbs_entry me 
 				WHERE ml.id = me.id_ligue 
