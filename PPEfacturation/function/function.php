@@ -77,15 +77,16 @@ function genRecap($annee) {
 	
 }
 
-function genRecapFacturationLocaux() {
+function genRecapFacturationLocaux($id_ligue) {
 	$bdd = connexion();
-	$req = 'SELECT COUNT(id_ligue) FROM mrbs_entry WHERE id_ligue = 1';
-	if($req > 5){
-		$req = 'SELECT nom_ligue, superficie_utilisee, create_by 
+	$req = 'SELECT COUNT(id_ligue) FROM mrbs_entry WHERE id_ligue = '.$id_ligue;
+	$reponseReq = $bdd->query($req);
+	if($reponseReq > 5){
+		$req2 = 'SELECT nom_ligue, superficie_utilisee, create_by 
 				FROM mrbs_ligue ml, mrbs_entry me 
 				WHERE ml.id = me.id_ligue 
-				AND id_ligue = 1';
-		$reponseReq = $bdd->query($req);
+				AND id_ligue = '.$id_ligue;
+		$reponseReq2 = $bdd->query($req2);
 		
 		
 		echo '<form id="choix" method="get" action="genPdfRegion.php" class="action">
@@ -93,7 +94,7 @@ function genRecapFacturationLocaux() {
 		echo "<table>";
 		echo "<tr><th>Nom de la ligue</th><th>Superficie utilisée</th><th>Réservation de</th></tr>";
 		
-		while ($donnees = $reponseReq->fetch()){
+		while ($donnees = $reponseReq2->fetch()){
 			echo "<tr>";
 			echo "<td>".$donnees['nom_ligue']."</td>";
 			echo "<td>".$donnees['superficie_utilisee']."</td>";
@@ -101,6 +102,9 @@ function genRecapFacturationLocaux() {
 			echo "</tr>";
 		}
 		echo"</table>";	
+	}
+	else{
+		echo ("Les réservations de salles sont inférieures à 6.");
 	}
 }
 
